@@ -11,7 +11,7 @@ LABEL repository="https://github.com/mgenteluci/cloudformation-deploy-action"
 LABEL homepage="https://github.com/mgenteluci/cloudformation-deploy-action"
 LABEL maintainer="Matheus Genteluci <mgenteluci97@gmail.com>"
 
-RUN apt-get update -y && apt-get install awscli -y
+RUN apt-get update && apt-get install -y awscli
 
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]

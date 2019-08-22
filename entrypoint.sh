@@ -1,31 +1,33 @@
-#!/bin/sh
+#!/bin/bash
 
-if [ -z "$TEMPLATE" ]; then
+set -e
+
+if [[ -z "$TEMPLATE" ]]; then
     echo Empty template specified
     exit 1
 fi
 
-if [ -z "$AWS_STACK_NAME" ]; then
+if [[ -z "$AWS_STACK_NAME" ]]; then
     echo AWS Stack Name invalid
     exit 1
 fi
 
-if [ -z "$AWS_ACCESS_KEY_ID" ]; then
+if [[ -z "$AWS_ACCESS_KEY_ID" ]]; then
     echo AWS Access Key ID invalid
     exit 1
 fi
 
-if [ -z "$AWS_SECRET_ACCESS_KEY" ]; then
+if [[ -z "$AWS_SECRET_ACCESS_KEY" ]]; then
     echo AWS Secret Access Key invalid
     exit 1
 fi
 
-if [ -z "$AWS_REGION" ]; then
+if [[ -z "$AWS_REGION" ]]; then
     echo AWS Region invalid
     exit 1
 fi
 
-if [ -z "$AWS_DEPLOY_BUCKET" ]; then
+if [[ -z "$AWS_DEPLOY_BUCKET" ]]; then
     echo AWS Deploy Bucket invalid
     exit 1
 fi
