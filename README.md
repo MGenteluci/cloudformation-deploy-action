@@ -37,6 +37,10 @@ jobs:
 * `AWS_SECRET_ACCESS_KEY` - [**Required**]. AWS Secret Access Key.
 * `AWS_DEPLOY_BUCKET` - [**Required**]. AWS S3 Bucket where the Stack package is going to be stored.
 
+### Examples
+
+* An implementation example can be found [here](https://github.com/MGenteluci/aws-sqs-cloudformation).
+
 ### License
 
 The Dockerfile and associated scripts and documentation in this project are released under the [MIT License](LICENSE).
