@@ -3,8 +3,14 @@
 set -e
 
 if [[ -z "$TEMPLATE" ]]; then
-    echo Empty template specified
-    exit 1
+    echo Empty template specified. Searching template.yml...
+
+    if [[ ! -f "template.yml" ]]; then
+        echo default template.yml not found
+        exit 1
+    fi
+
+    TEMPLATE="template.yml"
 fi
 
 if [[ -z "$AWS_STACK_NAME" ]]; then
@@ -32,6 +38,10 @@ if [[ -z "$AWS_DEPLOY_BUCKET" ]]; then
     exit 1
 fi
 
+if [[ -z "$CAPABILITIES" ]]; then
+    CAPABILITIES=CAPABILITY_IAM
+fi
+
 mkdir ~/.aws
 touch ~/.aws/credentials
 touch ~/.aws/config
@@ -46,4 +56,4 @@ output = text
 region = $AWS_REGION" > ~/.aws/config
 
 aws cloudformation package --template-file $TEMPLATE --output-template-file serverless-output.yaml --s3-bucket $AWS_DEPLOY_BUCKET
-aws cloudformation deploy --template-file serverless-output.yaml --stack-name $AWS_STACK_NAME --capabilities CAPABILITY_IAM
+aws cloudformation deploy --template-file serverless-output.yaml --stack-name $AWS_STACK_NAME --capabilities $CAPABILITIES
