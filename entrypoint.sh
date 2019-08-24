@@ -3,10 +3,10 @@
 set -e
 
 if [[ -z "$TEMPLATE" ]]; then
-    echo Empty template specified. Searching template.yml...
+    echo "Empty template specified. Looking for template.yml..."
 
     if [[ ! -f "template.yml" ]]; then
-        echo default template.yml not found
+        echo template.yml not found
         exit 1
     fi
 
@@ -38,6 +38,18 @@ if [[ -z "$AWS_DEPLOY_BUCKET" ]]; then
     exit 1
 fi
 
+if [[ ! -z "$AWS_BUCKET_PREFIX" ]]; then
+    AWS_BUCKET_PREFIX="--s3-prefix ${AWS_BUCKET_PREFIX}"
+fi
+
+if [[ $FORCE_UPLOAD == true ]]; then
+    FORCE_UPLOAD="--force-upload"
+fi
+
+if [[ $USE_JSON == true ]]; then
+    USE_JSON="--use-json"
+fi
+
 if [[ -z "$CAPABILITIES" ]]; then
     CAPABILITIES=CAPABILITY_IAM
 fi
@@ -55,5 +67,5 @@ echo "[default]
 output = text
 region = $AWS_REGION" > ~/.aws/config
 
-aws cloudformation package --template-file $TEMPLATE --output-template-file serverless-output.yaml --s3-bucket $AWS_DEPLOY_BUCKET
+aws cloudformation package --template-file $TEMPLATE --output-template-file serverless-output.yaml --s3-bucket $AWS_DEPLOY_BUCKET $AWS_BUCKET_PREFIX $FORCE_UPLOAD $USE_JSON
 aws cloudformation deploy --template-file serverless-output.yaml --stack-name $AWS_STACK_NAME --capabilities $CAPABILITIES

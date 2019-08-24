@@ -1,6 +1,6 @@
 FROM ubuntu
 
-LABEL version="0.0.1"
+LABEL version="1.0.0"
 
 LABEL com.github.actions.name="CloudFormation Deploy Action"
 LABEL com.github.actions.description="Deploy AWS CloudFormation Stack"
