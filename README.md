@@ -48,7 +48,7 @@ jobs:
   * Type: `String`
 * `FORCE_UPLOAD` - [Optional]. Whether to override existing packages in case they are an exact match.
   * Type: `Boolean`
-* `USE_JSON` - [Optional]. S3 Bucket's folder where to upload the package.
+* `USE_JSON` - [Optional]. Whether to use JSON instead of YML as the output template format.
   * Type: `Boolean`
 
 ### Examples
