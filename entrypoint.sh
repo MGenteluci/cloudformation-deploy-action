@@ -51,7 +51,13 @@ if [[ $USE_JSON == true ]]; then
 fi
 
 if [[ -z "$CAPABILITIES" ]]; then
-    CAPABILITIES=CAPABILITY_IAM
+    CAPABILITIES="--capabilities CAPABILITY_IAM"
+else
+    CAPABILITIES="--capabilities $CAPABILITIES"
+fi
+
+if [[ ! -z "$PARAMETER_OVERRIDES" ]]; then
+    PARAMETER_OVERRIDES="--parameter-overrides $PARAMETER_OVERRIDES"
 fi
 
 mkdir ~/.aws
@@ -68,4 +74,4 @@ output = text
 region = $AWS_REGION" > ~/.aws/config
 
 aws cloudformation package --template-file $TEMPLATE --output-template-file serverless-output.yaml --s3-bucket $AWS_DEPLOY_BUCKET $AWS_BUCKET_PREFIX $FORCE_UPLOAD $USE_JSON
-aws cloudformation deploy --template-file serverless-output.yaml --stack-name $AWS_STACK_NAME --capabilities $CAPABILITIES
+aws cloudformation deploy --template-file serverless-output.yaml --stack-name $AWS_STACK_NAME $CAPABILITIES $PARAMETER_OVERRIDES

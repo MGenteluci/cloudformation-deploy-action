@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - uses: mgenteluci/cloudformation-deploy-action@v1.2.0
+    - uses: mgenteluci/cloudformation-deploy-action@v1.3.0
       env:
         TEMPLATE: 'template.yml'
         AWS_STACK_NAME: 'my-stack'
@@ -29,27 +29,30 @@ jobs:
 ### Environment Variables
 
 * `TEMPLATE` - [Optional]. YML file containing CloudFormation Stack.
-  * Type: `String`
+  * Type: `string`
   * Default: `template.yml`
 * `CAPABILITIES` - [Optional]. AWS Stack Capabilites.
-  * Type: `String`
+  * Type: `string`
   * Default: `CAPABILITY_IAM`
 * `AWS_STACK_NAME` - [**Required**]. The Stack name that is going to be published.
-  * Type: `String`
+  * Type: `string`
 * `AWS_REGION` - [**Required**]. AWS Region where to deploy the CloudFormation Stack.
-  * Type: `String`
+  * Type: `string`
 * `AWS_ACCESS_KEY_ID` - [**Required**]. AWS Access Key Id.
-  * Type: `String`
+  * Type: `string`
 * `AWS_SECRET_ACCESS_KEY` - [**Required**]. AWS Secret Access Key.
-  * Type: `String`
+  * Type: `string`
 * `AWS_DEPLOY_BUCKET` - [**Required**]. AWS S3 Bucket where the Stack package is going to be stored.
-  * Type: `String`
+  * Type: `string`
 * `AWS_BUCKET_PREFIX` - [Optional]. S3 Bucket's folder where to upload the package.
-  * Type: `String`
+  * Type: `string`
 * `FORCE_UPLOAD` - [Optional]. Whether to override existing packages in case they are an exact match.
-  * Type: `Boolean`
+  * Type: `boolean`
 * `USE_JSON` - [Optional]. Whether to use JSON instead of YML as the output template format.
-  * Type: `Boolean`
+  * Type: `boolean`
+* `USE_JSON` - [Optional]. Whether to use JSON instead of YML as the output template format.
+  * Type: `string | list[string]`
+  * Syntax: `AliasName=prod` `AliasName=prod ApiUrl=https://api.com/api/v1`
 
 ### Examples
 
