@@ -50,7 +50,7 @@ jobs:
   * Type: `boolean`
 * `USE_JSON` - [Optional]. Whether to use JSON instead of YML as the output template format.
   * Type: `boolean`
-* `USE_JSON` - [Optional]. Whether to use JSON instead of YML as the output template format.
+* `PARAMETER_OVERRIDES` - [Optional]. Parameters to input in the template.
   * Type: `string | list[string]`
   * Syntax: `AliasName=prod` `AliasName=prod ApiUrl=https://api.com/api/v1`
 
