@@ -53,6 +53,8 @@ jobs:
 * `PARAMETER_OVERRIDES` - [Optional]. Parameters to input in the template.
   * Type: `string | list[string]`
   * Syntax: `AliasName=prod` `AliasName=prod ApiUrl=https://api.com/api/v1`
+* `ROLE_ARN` - [Optional]. ARN of AWS IAM role that AWS CloudFormation assumes when executing the change set.
+  * Type: `string`
 
 ### Examples
 
