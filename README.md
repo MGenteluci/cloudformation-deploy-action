@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - uses: mgenteluci/cloudformation-deploy-action@v1.4.0
+    - uses: mgenteluci/cloudformation-deploy-action@v1.4.1
       env:
         TEMPLATE: 'template.yml'
         AWS_STACK_NAME: 'my-stack'
